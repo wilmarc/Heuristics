@@ -4,6 +4,8 @@ from sklearn.datasets import fetch_california_housing
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LinearRegression
+from sklearn.ensemble import RandomForestRegressor
+
 from sklearn.metrics import mean_squared_error, r2_score
 
 # Clase para la partícula del PSO
@@ -170,27 +172,52 @@ print(f"\nEvaluación en conjunto de prueba (OLS):")
 print(f"MSE: {mse_ols:.6f}")
 print(f"R²: {r2_ols:.6f}")
 
+
+#Solución con Randomforest
+
+model_RF=RandomForestRegressor(n_estimators=500, random_state=0)
+model_RF.fit(X_train_scaled, y_train)
+
+#Evaluación en el conjunto de prueba
+y_pred_RF=model_RF.predict(X_test_scaled)
+mse_RF = mean_squared_error(y_test, y_pred_RF)
+r2_RF = r2_score(y_test, y_pred_RF)
+
+print(f"Coeficientes Random Forest: {model_RF.get_params()}")
+print(f"\nEvaluación en conjunto de prueba (RF):")
+print(f"MSE: {mse_RF:.6f}")
+print(f"R²: {r2_RF:.6f}")
+
+
 # Comparar resultados
 print("\n--- Comparación de resultados ---")
-print(f"MSE - PSO: {mse_pso:.6f}, OLS: {mse_ols:.6f}")
-print(f"R² - PSO: {r2_pso:.6f}, OLS: {r2_ols:.6f}")
+print(f"MSE - PSO: {mse_pso:.3f}, OLS: {mse_ols:.3f}, RF: {mse_RF:.3f}")
+print(f"R² - PSO: {r2_pso:.3f}, OLS: {r2_ols:.3f}, RF {r2_RF:.3f}")
+
 
 # Visualizar predicciones
 plt.figure(figsize=(12, 6))
 
-plt.subplot(1, 2, 1)
+plt.subplot(1, 3, 1)
 plt.scatter(y_test, y_pred_pso, alpha=0.5)
 plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 'r--')
 plt.xlabel('Valores reales')
 plt.ylabel('Predicciones PSO')
 plt.title('PSO: Valores reales vs. predicciones')
 
-plt.subplot(1, 2, 2)
+plt.subplot(1, 3, 2)
 plt.scatter(y_test, y_pred_ols, alpha=0.5)
 plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 'r--')
 plt.xlabel('Valores reales')
 plt.ylabel('Predicciones OLS')
 plt.title('OLS: Valores reales vs. predicciones')
+
+plt.subplot(1, 3, 3)
+plt.scatter(y_test, y_pred_RF, alpha=0.5)
+plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 'r--')
+plt.xlabel('Valores reales')
+plt.ylabel('Predicciones RF')
+plt.title('RF: Valores reales vs. predicciones')
 
 plt.tight_layout()
 plt.show()
