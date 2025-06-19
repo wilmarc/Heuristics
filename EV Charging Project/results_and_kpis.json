@@ -1,0 +1,49 @@
+{
+    "best_hyperparameters_from_optuna": {
+        "MAX_ILS_ITERATIONS": 36,
+        "MAX_NO_IMPROVEMENT_ILS": 17,
+        "MAX_LS_ITERS_PER_CALL": 6,
+        "PERTURBATION_STRENGTH": 0.07208495354350257,
+        "INITIAL_HEURISTIC": "sa_fcfs"
+    },
+    "optuna_objective_for_best_params": 1800255.2009329689,
+    "final_run_aggregated_kpis": {
+        "total_execution_time_seconds": 124.6008551120758,
+        "average_objective_on_rerun": 1800909.7626798057,
+        "total_energy_supplied_kwh_all_instances": 2378.7103073164894,
+        "number_of_instances_processed": 2,
+        "number_of_successful_runs": 2,
+        "per_instance_details": {
+            "test_system_1.json": {
+                "Number of Chargers": 10,
+                "Number of EV": 103,
+                "Requested Energy (kWh)": 3286.481594959156,
+                "Station Capacity": 980.0,
+                "Provided Energy (kWh)": 825.5773582494664,
+                "Provided/requested ratio (%)": 25.120401085335352,
+                "Total Charging Cost ($)": 24845.954094306,
+                "Standard Deviation of Energy (KWh)": 15.882,
+                "Mean supplied energy (kWh)": 24.282,
+                "Minimum charge (kWh)": 0.35,
+                "Satisfaction Threshold (%)": 0.5,
+                "Dissatisfied Users": 81,
+                "Total time (s)": 29.31222653388977
+            },
+            "test_system_2.json": {
+                "Number of Chargers": 15,
+                "Number of EV": 183,
+                "Requested Energy (kWh)": 5332.502592881107,
+                "Station Capacity": 2800.0,
+                "Provided Energy (kWh)": 1553.1329490670134,
+                "Provided/requested ratio (%)": 29.125779538118678,
+                "Total Charging Cost ($)": 54070.924010296476,
+                "Standard Deviation of Energy (KWh)": 13.035,
+                "Mean supplied energy (kWh)": 18.712,
+                "Minimum charge (kWh)": 0.31,
+                "Satisfaction Threshold (%)": 0.5,
+                "Dissatisfied Users": 127,
+                "Total time (s)": 95.28862857818604
+            }
+        }
+    }
+}
